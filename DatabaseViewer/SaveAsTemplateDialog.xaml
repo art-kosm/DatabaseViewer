@@ -1,0 +1,34 @@
+﻿<Window x:Class="DatabaseViewer.SaveAsTemplateDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DatabaseViewer"
+        mc:Ignorable="d"
+        Title="Сохранить шаблон"
+        Height="Auto"
+        Width="Auto"
+        MinWidth="300"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <DockPanel Grid.Row="0">
+            <TextBlock Margin="5" VerticalAlignment="Center" DockPanel.Dock="Left">Введите название шаблона:</TextBlock>
+            <TextBox Margin="5" Padding="0, 3, 0, 3" DockPanel.Dock="Left" x:Name="templateNameEdit"/>
+        </DockPanel>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Content="Сохранить" Padding="5, 3, 5, 3" Margin="5" MinWidth="48" Click="Accept"></Button>
+            <Button Content="Отмена" Padding="5, 3, 5, 3" Margin="5" Click="Reject" ></Button>
+        </StackPanel>
+    </Grid>
+</Window>

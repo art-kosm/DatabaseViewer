@@ -1,0 +1,66 @@
+﻿<Window x:Class="DatabaseViewer.LoginDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
+        xmlns:local="clr-namespace:DatabaseViewer"
+        mc:Ignorable="d"
+        Title="Настройки подключения"
+        MinHeight="350"
+        MaxHeight="350"
+        Width="Auto"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Loaded="Window_Loaded">
+    <DockPanel>
+        <Menu DockPanel.Dock="Top" VerticalAlignment="Top" Padding="5">
+            <MenuItem Header="Загрузить шаблон" x:Name="loadTemplateAction">
+            </MenuItem>
+        </Menu>
+
+        <DockPanel Margin="5" LastChildFill="False">            
+            <TextBlock DockPanel.Dock="Top" Margin="5" x:Name="templateNameBlock">Шаблон:</TextBlock>
+
+            <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
+                <Button Content="Создать шаблон" Padding="5, 3, 5, 3" Margin="5" Click="CreateTemplate"></Button>
+                <Button Content="Сохранить как шаблон" Padding="5, 3, 5, 3" Margin="5" Click="SaveAsTemplate"></Button>
+            </StackPanel>
+
+            <Grid DockPanel.Dock="Top" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Row="1" Grid.Column="0" Margin="5" VerticalAlignment="Center">server:</TextBlock>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="5" Padding="1, 3, 1, 3" x:Name="serverEdit" TextChanged="ResetTemplateName"/>
+                <TextBlock Grid.Row="2" Grid.Column="0" Margin="5" VerticalAlignment="Center">database:</TextBlock>
+                <TextBox Grid.Row="2" Grid.Column="1" Margin="5" Padding="1, 3, 1, 3" x:Name="databaseEdit" TextChanged="ResetTemplateName"/>
+                <TextBlock Grid.Row="3" Grid.Column="0" Margin="5" VerticalAlignment="Center" x:Name="loginTextBlock">login:</TextBlock>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Padding="1, 3, 1, 3" x:Name="loginEdit" TextChanged="ResetTemplateName"/>
+                <TextBlock Grid.Row="4" Grid.Column="0" Margin="5" x:Name="passwordTextBlock">password:</TextBlock>
+                <TextBox Grid.Row="4" Grid.Column="1" Margin="5" Padding="1, 3, 1, 3" x:Name="passwordEdit" TextChanged="ResetTemplateName"/>
+                
+                <TextBlock Grid.Row="0" Grid.Column="0" Margin="5" VerticalAlignment="Center">Тип:</TextBlock>
+                <ComboBox Grid.Row="0" Grid.Column="1" Margin="5" x:Name="credentialsTypeComboBox" SelectionChanged="UpdateCredentialsType" SelectedIndex="1">
+                    <sys:String>Windows Authentication</sys:String>
+                    <sys:String>SQL Server Authentication</sys:String>
+                </ComboBox>
+
+            </Grid>
+
+            <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="OK" Padding="5, 3, 5, 3" Margin="5" MinWidth="48" Click="Accept"></Button>
+                <Button Content="Закрыть" Padding="5, 3, 5, 3" Margin="5" Click="Reject" ></Button>
+            </StackPanel>
+        </DockPanel>
+    </DockPanel>
+</Window>
